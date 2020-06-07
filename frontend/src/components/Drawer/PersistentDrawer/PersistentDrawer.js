@@ -119,17 +119,19 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
-  importText:{
+  importText: {
     textAlign: 'center',
     color: '#c4c3bf',
-    zIndex: 99
+    zIndex: 99,
+    position: 'absolute',
+    right: '50px',
+    top: '150px',
   },
-  importTextContainer:{
+  importTextContainer: {
     height: '100%',
-    padding: '10% 10% 0 65%',
     backgroundImage: `url(${fetchImage('tapes')})`,
-    objectFit: 'contain'
-  }
+    width: '100%'
+  },
 }));
 
 export default function PersistentDrawerLeft() {
@@ -205,12 +207,14 @@ export default function PersistentDrawerLeft() {
         <div className={classes.main} />
         {scripts.length > 0 && (
           <div>
-            <ScriptTabController scripts={scripts}/>
+            <ScriptTabController scripts={scripts} />
           </div>
         )}
         {scripts.length === 0 && (
           <div className={classes.importTextContainer}>
-            <Typography classes={{root: classes.importText}}>Import a script to get started.</Typography>
+            <Typography classes={{ root: classes.importText }}>
+              Import a script to get started.
+            </Typography>
           </div>
         )}
       </div>
