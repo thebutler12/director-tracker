@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     color: '#545b64',
     textTransform: 'none',
+    padding: 0,
     fontSize: '0.75rem',
     fontWeight: theme.typography.fontWeightRegular,
     fontFamily: 'Amazon Ember, Helvetica, Arial, sans-serif',
@@ -71,10 +72,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({}) => {
+export default ({scripts}) => {
   const classes = useStyles();
-  const [{ scripts }, dispatch] = useScriptState();
-  const [tabValue, setTabValue] = useState(scripts.length);
+  const [tabValue, setTabValue] = useState(0);
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -88,7 +88,6 @@ export default ({}) => {
         {...other}>
         {value === index && (
           <Box classes={{ root: classes.tabpanel }} p={3}>
-            {/* <Typography>{children}</Typography> */}
             {children}
           </Box>
         )}
@@ -103,11 +102,8 @@ export default ({}) => {
   };
 
   const handleChange = (event, newValue) => {
-    console.dir(newValue)
     setTabValue(newValue);
   };
-
-  console.dir(tabValue)
 
   return (
     <div className={classes.root}>
@@ -117,7 +113,7 @@ export default ({}) => {
             classes={{ flexContainer: classes.tabContainer }}
             TabIndicatorProps={{
               style: {
-                backgroundColor: '#000',
+                backgroundColor: '#eeeeee',
               },
             }}
             value={tabValue}

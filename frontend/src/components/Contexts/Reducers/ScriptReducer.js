@@ -1,23 +1,27 @@
-import { CardActions } from "@material-ui/core";
-
 export const scriptReducer = (state, action) => {
   switch (action.type) {
-    case 'importScripts':
-      console.dir(action.scripts)
+    case 'importScript':
+      state.scripts.push(action.script);
       return {
         ...state,
-        scripts: action.scripts,
+        scripts: state.scripts,
+      };
+    case 'clearScript':
+      state.scripts.splice(action.cursor, 1)
+      return {
+        ...state,
+        scripts: state.scripts,
       };
     case 'clearScripts':
       return {
         ...state,
-        scripts: [],
+        scripts: action.scripts,
       };
-      case 'updateScripts':
-        return {
-          ...state,
-          scripts: action.scripts,
-        };
+    case 'updateScripts':
+      return {
+        ...state,
+        scripts: action.scripts,
+      };
     default:
       return state;
   }

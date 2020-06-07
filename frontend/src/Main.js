@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import Header from './components/Header/Header';
 import { ScriptProvider } from './components/Contexts/ScriptContext';
 import { scriptReducer } from './components/Contexts/Reducers/ScriptReducer';
-export default (...props) => {
-  useEffect(() => {}, []);
+export default () => {
 
   return (
     <div>

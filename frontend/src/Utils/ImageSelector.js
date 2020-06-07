@@ -1,34 +1,20 @@
-
-const serviceIconMap = {
-  'search': 'search'
+const images = {
+  search: 'search',
+  tapes: 'tapes'
 };
 
 const icons = new Map();
 
-for (let [key, value] of Object.entries(serviceIconMap)) {
-  icons.set(value, key)
+for (let [key, value] of Object.entries(images)) {
+  icons.set(value, key);
 }
 
-export const fetchImage = (type, state) => { 
-  let image;
-
-  if (state && type) {
-    image = icons.get(`${type}-${state.status}`)
-  } else if (state && !type) {
-    image = icons.get(state.status)
-  } else if( !state && type) {    
-    image = icons.get(type)
-  } else {
-    return undefined
-  }
-
-  return image ? buildURL(image) : undefined
+export const fetchImage = (name) => {
+  console.dir(name)
+  console.dir(buildURL(icons.get(name)))
+  return buildURL(icons.get(name));
 };
 
 const buildURL = (image) => {
-  return `${process.env.PUBLIC_URL}/icons/${image}.svg`;
-}
-
-export const fetchLogo = transparent => {
-  return transparent ? `${process.env.PUBLIC_URL}/icons/${icons.get('logo-transparent')}.svg` : `${process.env.PUBLIC_URL}/icons/${icons.get('logo')}.svg`;
+  return `${process.env.PUBLIC_URL}/images/${image}.jpg`;
 };

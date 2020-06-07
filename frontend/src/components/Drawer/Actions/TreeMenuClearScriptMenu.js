@@ -132,7 +132,7 @@ const useStyles = makeStyles({
 export default ({}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState([]);
-  const [{}, clearScript] = useScriptState();
+  const [{scripts}, clearScript] = useScriptState();
 
   const treeViewRef = useRef();
 
@@ -142,7 +142,8 @@ export default ({}) => {
 
   const handleSelect = (event, nodeId) => {
     clearScript({
-      type: 'clearScript'
+      type: 'clearScripts',
+      scripts: []
     });
   };
 
@@ -160,7 +161,7 @@ export default ({}) => {
             <TreeItem
               key='0'
               nodeId='0'
-              label={'Clear script'}
+              label={'Clear scripts'}
               classes={{
                 root: classes.selection,
                 label: classes.label,

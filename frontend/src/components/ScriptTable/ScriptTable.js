@@ -215,7 +215,7 @@ export default ({ script }) => {
     {
       id: 'recordDate',
       label: 'Recorded On',
-      minWidth: 50,
+      minWidth: 100,
       align: 'left',
       format: (value) => (value ? value.toISOString() : 'N/A'),
     },

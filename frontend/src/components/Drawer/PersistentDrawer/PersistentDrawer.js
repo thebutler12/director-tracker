@@ -15,6 +15,8 @@ import TreeMenuActionMenu from '../Actions/TreeMenuActionMenu';
 import ScriptTable from '../../ScriptTable/ScriptTable';
 import FileImporter from '../Importer/FileImporter';
 import ScriptTabController from '../../ScriptTable/ScriptTabController';
+import { useScriptState } from '../../Contexts/ScriptContext';
+import { fetchImage } from '../../../Utils/ImageSelector';
 
 const drawerWidth = 280;
 
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    background: '#232f3e',
+    background: '#181614',
     boxShadow: 'none',
   },
   appBarShift: {
@@ -71,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerHeader: {
     borderRight: '1px solid #ddd',
-    height: '114px',
+    height: '130px',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
@@ -82,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 99,
     background: '#fff',
-    borderBottom: '1px solid #aab7b8',
   },
   main: {
     display: 'flex',
@@ -118,12 +119,24 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  importText:{
+    textAlign: 'center',
+    color: '#c4c3bf',
+    zIndex: 99
+  },
+  importTextContainer:{
+    height: '100%',
+    padding: '10% 10% 0 65%',
+    backgroundImage: `url(${fetchImage('tapes')})`,
+    objectFit: 'contain'
+  }
 }));
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [{ scripts }] = useScriptState();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -190,9 +203,16 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}>
         <div className={classes.main} />
-        <div>
-          <ScriptTabController />
-        </div>
+        {scripts.length > 0 && (
+          <div>
+            <ScriptTabController scripts={scripts}/>
+          </div>
+        )}
+        {scripts.length === 0 && (
+          <div className={classes.importTextContainer}>
+            <Typography classes={{root: classes.importText}}>Import a script to get started.</Typography>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -126,7 +126,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default ({ compound }) => {
+export default ({ }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(['0']);
 
