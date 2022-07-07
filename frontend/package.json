@@ -28,7 +28,7 @@
     "lodash.sortby": "^4.7.0",
     "lodash.words": "^4.2.0",
     "match-sorter": "^4.0.2",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "object-hash": "^2.0.2",
     "randomcolor": "^0.5.4",
     "react": "^16.13.1",
