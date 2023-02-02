@@ -23,7 +23,7 @@
     "eslint-plugin-flowtype": "^4.6.0",
     "file-saver": "^2.0.2",
     "filefy": "^0.1.10",
-    "jszip": "^3.2.2",
+    "jszip": "^3.8.0",
     "lodash.difference": "^4.5.0",
     "lodash.sortby": "^4.7.0",
     "lodash.words": "^4.2.0",
